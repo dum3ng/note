@@ -1,4 +1,5 @@
 site_name: My Docs
+site_url: https://dum3ng.github.io/note
 theme:
   name: material
 
