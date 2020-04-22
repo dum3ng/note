@@ -27,3 +27,7 @@ value -> variable -> token
 ### 空间 space
 
 ### 版式 typography
+
+## references
+
+- [the-cognitive-complexity-of-css](https://ginseng.ai/blog/the-cognitive-complexity-of-css/)

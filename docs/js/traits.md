@@ -36,7 +36,7 @@ TODO:
 button.addEventListener("click", () => {
   console.log(1);
 });
-button.addEventListener("click", e => {
+button.addEventListener("click", (e) => {
   e.stopImmediatePropagation();
   console.log(2);
 });
@@ -50,3 +50,29 @@ button.addEventListener("click", () => {
 When an object add multiple event listeners, the listeners will trigger in order
 when event is fired by default, and call `stopImmediatePropagation` will stop
 the following listener to execute.
+
+## async/await in `forEach`
+
+```js
+function delay(value) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value);
+    }, 1500);
+  });
+}
+
+async function test() {
+  const arr = [1, 2, 3];
+  arr.forEach(async (x) => {
+    const r = await delay(x);
+    console.log(r);
+  });
+}
+
+test();
+```
+
+The above code will not print value one after another with a delay.
+
+More detailed explanation can be found [here](https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop)
