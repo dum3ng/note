@@ -20,8 +20,9 @@ profile 中包含一个或者多个`service`(服务）， service 可以理解�
 例如，一个设备可能同时提供电量信息服务 BatteryService, 以及音量大小服务 VolumeService.
 
 一个 service 包含一个或者多个`characteristic`(特征).
-`characteristic`可以理解为服务的属性，一个`characteristic`包括一个 value，
+`characteristic`可以理解为服务的属性，一个`characteristic`包括一个 value(array of bytes)，
 以及多个可选的`descriptor`.
+`descriptor`包含一个value（array of bytes），用来描述或者配置它的`characteristic`.
 
 特征是与外界交互的最小单位。
 蓝牙设备硬件厂商通常都会提供他们的设备里面各个服务(service)和特征(characteristics)的功能，
@@ -50,7 +51,7 @@ SIG 定义了一些通用属性配置文件 `GATT profile`.
 
 - a, 如果数据中已经和某些蓝牙设备绑定，可以使用 BluetoothAdapter.getBondedDevices();方法获得已经绑定的蓝牙设备列表。通过指定特定的 peripheral 的 UUID,central 只会 discover 这个特定的设备。
 - b, 搜索周围的蓝牙设备受用 BluetoothAdapter.startDiscovery()方法
-- c, 搜索到的蓝牙设备都是通过广播返回，so..。需要注册广播接收器来获得已经搜索到的蓝牙设备
+- c, 搜索到的蓝牙设备都是通过广播返回，需要注册广播接收器来获得已经搜索到的蓝牙设备
 
 3,连接外设(connect)（根据 peripheral ID 连接指定的外设）—
 
@@ -64,7 +65,10 @@ SIG 定义了一些通用属性配置文件 `GATT profile`.
 
 ### web
 
-web 跟 bluetooth 相关的 api 仍处于 draft 状态。即使是 chrome 也仅支持有限的 api
+web 跟 bluetooth 相关的 api 仍处于 draft 状态。即使是 chrome 也仅支持有限的 api.
+
+出于web安全性和开放性的考虑，web bluetooth不支持跨连接的持久性，即[断开设备连接后必须重新配对](https://webbluetoothcg.github.io/web-bluetooth/#persistence)（？）
+
 
 ### 原生 TODO
 
