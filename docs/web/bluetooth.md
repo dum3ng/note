@@ -15,6 +15,8 @@
 
 ## profile
 
+![gatt](assets/gatt.webp)
+
 每个蓝牙设备包含一个 profile（配置文件），
 profile 中包含一个或者多个`service`(服务）， service 可以理解为设备具有的一种能力，
 例如，一个设备可能同时提供电量信息服务 BatteryService, 以及音量大小服务 VolumeService.
@@ -33,11 +35,11 @@ profile 中包含一个或者多个`service`(服务）， service 可以理解�
 
 每个`service`和`characteristics`都由一个`UUID`来标识。
 
-### GATT(Generic ATTributes)
+### GATT(Generic ATTributes) 通用属性协议
 
-SIG 定义了一些通用属性配置文件 `GATT profile`.
+SIG 定义了一些标准的通用属性配置文件 .
 
-例如，电池配置和血压配置，都在 GATT 中进行了定义。
+例如，电池信息和血压测量，都有相应的定义。
 
 以血压[Blood Pressure Profile](https://www.bluetooth.org/docman/handlers/downloaddoc.ashx?doc_id=457086)为例, TODO
 
@@ -106,10 +108,19 @@ android
 - 如何知道设备测量血压的 serviceId? 每种血压仪的 serviceId 是否一致?
 - 如何知道特征 characteristicid?
 - 如何解析获取的特征值? 其数据结构是否对各个血压仪一致?
+- 一次传输只能传输 20 个 byte, 对于内置存储的血压设备如何获取所有的数据?
 
 ## 其他相关
 
+### SIG
+
 蓝牙技术联盟(Bluetooth Special Interest Group, Bluetooth SIG)是一个以制定蓝牙规范，以推动蓝牙技术为宗旨的跨国组织。它拥有蓝牙的商标，负责认证制造厂商，授权他们使用蓝牙技术与蓝牙标志，但是它本身不负责蓝牙装置的设计、生产及贩售。
+
+### 小米 app 如何和手环配对
+
+实质上仍然是使用蓝牙来配对.
+通过对信号强度的计算, 可以判断手环和中心设备(手机)的大致距离,
+当相当近时, app 再和手环进行配对.
 
 ## references
 
