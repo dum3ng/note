@@ -1,4 +1,4 @@
-# nginx
+# nginx 指令
 
 ## remove http header
 
